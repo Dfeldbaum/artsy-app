@@ -9,14 +9,13 @@ var bcrypt = require('bcryptjs');
 // home page/login page
 ctrl.get('/', renderLoginPage)
 ctrl.get('/register', renderRegisterPage)
-ctrl.get('/profilepage', renderProfilePage)
 
 
 
-ctrl.post('/profilepage', attemptToRegister);
+ctrl.post('/register/success', attemptToRegister);
 ctrl.post('/', attemptToLogin);
 
-
+// homepage/login page
 function renderLoginPage(req, res, next) {
 	res.render('index', {});
 };	
@@ -25,9 +24,7 @@ function renderRegisterPage (req, res, next) {
 	res.render('register', {})
 };
 
-function renderProfilePage (req, res, next) {
-	res.render('profilepage', {})
-};
+
 
 
 function attemptToRegister(req, res, next) {
@@ -38,6 +35,8 @@ function attemptToRegister(req, res, next) {
 	var password = req.body.password_hash;
 	var hashedPassword = createPasswordHash(password);
 	var account = new User({
+		first_name: req.body.first_name,
+		last_name: req.body.last_name,
 		username: req.body.username,
 		password_hash: hashedPassword
 	}).save().then(function(result) {
