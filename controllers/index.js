@@ -6,24 +6,50 @@ var User = require('../models/userModel');
 var bcrypt = require('bcryptjs');
 
 
-// home page/login page
+// home/login page
 ctrl.get('/', renderLoginPage)
+// register page
 ctrl.get('/register', renderRegisterPage)
+// profile page
+ctrl.get('/profilepage', renderProfilePage)
 
 
 
 ctrl.post('/register/success', attemptToRegister);
 ctrl.post('/', attemptToLogin);
 
-// homepage/login page
+
+
+
+
 function renderLoginPage(req, res, next) {
-	res.render('index', {});
+	res.render('index', { title: 'Artsy'});
 };	
+
+
+
 
 function renderRegisterPage (req, res, next) {
 	res.render('register', {})
 };
 
+// function renderProfilePage (req, res, next) {
+// 	res.render('profilepage', { title: 'Artsy' })
+// };
+
+
+function renderProfilePage(req, res, next){
+	// res.render('profilepage')
+	console.log(req.session)
+ User.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
+     function(result) {
+   console.log(result.attributes);
+       res.render('profilepage' , result.attributes);
+     })
+     .catch(function(error) {
+       console.log(error)
+     });
+}
 
 
 
@@ -40,8 +66,11 @@ function attemptToRegister(req, res, next) {
 		username: req.body.username,
 		password_hash: hashedPassword
 	}).save().then(function(result) {
+		req.session.theResultFromOurModelInsertion = result.attributes.username
+
 		//res.render
-		res.json(result); // res.redirect(/home)
+		// res.json(result); 
+		res.redirect('/profilepage')
 	});
 };
 
@@ -60,11 +89,25 @@ function comparePasswordHashes (input, db) {
 function attemptToLogin(req, res, next) {
 	var password = req.body.password_hash;
 	// who is our user?
-	Account.where('username', req.body.username).fetch().then(
+	console.log(password)
+
+	console.log(req.body.username, 'this is username')
+	User.where({username: req.body.username}).fetch().then(
 		function(result) {
+			// res.send('hi')
 			var attempt = comparePasswordHashes(req.body.password_hash, result.attributes.password_hash);
 			// then we share the results
-			res.json({'is_logged_in': attempt });
+			// res.json({'is_logged_in': attempt });
+			console.log(result)
+			console.log(attempt, ' this is attempt')
+			if (attempt === true) {
+			req.session.theResultFromOurModelInsertion = result.attributes.username
+			res.redirect('/profilepage')
+			}
+			else {
+				res.redirect('/')
+			}
+
 		}
 	)
 };
