@@ -6,16 +6,28 @@ var User = require('../models/userModel');
 var bcrypt = require('bcryptjs');
 
 
+// home page/login page
+ctrl.get('/', renderLoginPage)
+ctrl.get('/register', renderRegisterPage)
+ctrl.get('/profilepage', renderProfilePage)
 
-ctrl.get('/', function(req, res, next) {
-	res.render('index', {})
-
-});
 
 
 ctrl.post('/profilepage', attemptToRegister);
 ctrl.post('/', attemptToLogin);
 
+
+function renderLoginPage(req, res, next) {
+	res.render('index', {});
+};	
+
+function renderRegisterPage (req, res, next) {
+	res.render('register', {})
+};
+
+function renderProfilePage (req, res, next) {
+	res.render('profilepage', {})
+};
 
 
 function attemptToRegister(req, res, next) {
@@ -62,5 +74,8 @@ function attemptToLogin(req, res, next) {
 
 
 module.exports = ctrl;
+
+
+
 
 

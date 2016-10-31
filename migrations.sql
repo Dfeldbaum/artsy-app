@@ -9,6 +9,11 @@ create table users (
 	primary key(id)
 );	
 
+ALTER TABLE users
+   	ADD COLUMN first_name varchar(255) NOT NULL
+    AFTER id;
+
+
 create table photos (
 	id int not null auto_increment,
 	photo_file text not null,
@@ -18,4 +23,8 @@ create table photos (
 	user_id int not null references users(id), 
 	primary key(id)
 );
+
+
+
+
 
