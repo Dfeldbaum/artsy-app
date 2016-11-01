@@ -2,40 +2,22 @@
 <html>
 	<head>
 		<title>{{Title}}</title>
-	</head>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Uploading Images as Base 64 via File Reader</title>
 	    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-	    <!-- load icon font -->
-	    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	    <!-- load MUI -->
-	    <link href="//cdn.muicss.com/mui-0.1.4/css/mui.min.css" rel="stylesheet" type="text/css" />
-	    <script src="//cdn.muicss.com/mui-0.1.4/js/mui.min.js"></script>    
-	    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	</head>
+
 	<body>
-		<div class="mui-container">
-		    <div class="mui-panel">
-		    	<h1>Welcome, {{username}}.</h1>
-		        <h1><i class="fa fa-cloud-upload"></i> Uploading Images as Base 64 via FileReader</h1>
 
-		        <h3>In Our example, we're just going to add whatever image you select to the page.</h3>
-		        Your server side params object should contain a new value called <code>image_as_base64</code>. This contains the base64 encoded file.
-
-		        <form action="/api/photo" method="post"></form>
-		        <h3>Upload Image</h3>
-		        <input type="file" name="image" class="mui-form-control">
-		        <input type="hidden" name="image_as_base64">
-		        <input type="submit" class="mui-btn mui-btn-primary mui-btn-raised" value="Upload">
-		        </form>
-
-		        <div id="images" class="mui-form-control"></div>
-
-		    </div>
-		</div>
-
-
+{{!--     	<h5>Welcome, {{username}}!</h5> --}}
+        <form action="/upload" method="post">
+	        <h6>Upload Image</h6>
+	        <input type="text" name="photo_name" placeholder="Photo Name">
+	        <input type="file" name="photo" placeholder="photo">
+	        <input type="hidden" name="image_as_base64">
+	        <input type="submit" value="Upload">
+        </form>
 
 		<script type="text/javascript">
 		    $(document).ready(function(event) {
@@ -44,7 +26,7 @@
 		        var hiddenFileForParams = document.querySelector('input[type="hidden"]');
 
 		        fileInput.addEventListener('change', function() {
-		            var fileAsBase64 = convertToBase64(fileInput.files[0], hiddenFileForParams, addImage);
+		            var fileAsBase64 = convertToBase64(fileInput.files[0], hiddenFileForParams);
 		            // now, you can sent your file over via an $ajax call in that callback
 		        });
 
@@ -64,10 +46,10 @@
 		                    // event target result is our base64 encoded type
 		                    // this is whatever file has been reader during 'readAsDataURL'
 		                    console.log("File as base 64:");
-		                    console.log(event.target.result);
+		                   
 		                    // pass our base64 object on to our callback
 		                    hiddenInput.value = event.target.result;
-		                    callback(event.target.result);
+		                   	
 		                    return(event.target.result);
 		                    // catch an error if one occurs...
 		                } catch (ex) {
@@ -79,13 +61,6 @@
 		            reader.readAsDataURL(binaryData);
 		        };
 
-		        function addImage(base64Image) {
-		            if (!base64Image) return;
-		            var imageContainer = document.getElementById('images');
-		            var img = document.createElement('img');
-		            img.src = base64Image;
-		            images.appendChild(img);
-		        }
 
 		    });
 		</script>

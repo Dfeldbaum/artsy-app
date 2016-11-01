@@ -16,15 +16,21 @@ ALTER TABLE users
 
 create table photos (
 	id int not null auto_increment,
-	photo_file text not null,
-	photo_title varchar(255) not null,
+	image_as_base64 text not null,
+	photo_name varchar(255) not null,
 	photo_date DATETIME,
-	vote_count int,
+	-- vote_count int,
 	user_id int not null references users(id), 
 	primary key(id)
 );
 
 
+
+ALTER TABLE photos
+   	CHANGE photo_file image_as_base64 text not null;
+
+ALTER TABLE photos
+   	CHANGE photo_title photo_name varchar(255) not null;
 
 
 

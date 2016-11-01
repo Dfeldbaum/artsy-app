@@ -2,8 +2,18 @@ var express = require('express');
 var ctrl = express.Router();
 
 // require user model
-var User = require('../models/userModel');
+var UserModel = require('../models/userModel');
+var photoModel = require('../models/photoModel');
 var bcrypt = require('bcryptjs');
+
+
+// foreign key relationship
+ctrl.get('/foreignKey', function(req, res, next){
+	UserModel.where({id: 1}).fetch({withRelated: ['photos']})
+	.then(function(user){
+		res.json(user.related('photos'))
+	})
+});
 
 
 // home/login page
@@ -15,10 +25,25 @@ ctrl.get('/profilepage', renderProfilePage)
 
 
 
+
+
 ctrl.post('/register/success', attemptToRegister);
 ctrl.post('/', attemptToLogin);
+// trigger uploadPhoto
+ctrl.post('/upload', uploadPhoto);
 
 
+
+function uploadPhoto(req, res, next){
+	console.log(req.session)
+	console.log(req.body, ' this is req.bdoy')
+    var photo = new photoModel({
+    	user_id: req.session.user_id,
+    	image_as_base64: req.body.image_as_base64,
+        photo_name: req.body.photo_name
+    }).save();
+    res.redirect('/profilepage')
+}
 
 
 
@@ -27,30 +52,29 @@ function renderLoginPage(req, res, next) {
 };	
 
 
-
-
 function renderRegisterPage (req, res, next) {
 	res.render('register', {})
 };
 
-// function renderProfilePage (req, res, next) {
-// 	res.render('profilepage', { title: 'Artsy' })
-// };
 
 
 function renderProfilePage(req, res, next){
 	// res.render('profilepage')
-	console.log(req.session)
- User.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
-     function(result) {
-   console.log(result.attributes);
-       res.render('profilepage' , result.attributes);
+	console.log(req.body)
+ 	UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
+    function(result) {
+
+    
+
+
+   	console.log(result.attributes);
+		res.render('profilepage' , result.attributes);
      })
      .catch(function(error) {
-       console.log(error)
+       	console.log(error)
      });
+ 
 }
-
 
 
 function attemptToRegister(req, res, next) {
@@ -60,7 +84,7 @@ function attemptToRegister(req, res, next) {
 	// { username: '', password_hash: ''}
 	var password = req.body.password_hash;
 	var hashedPassword = createPasswordHash(password);
-	var account = new User({
+	var account = new UserModel({
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		username: req.body.username,
@@ -92,7 +116,7 @@ function attemptToLogin(req, res, next) {
 	console.log(password)
 
 	console.log(req.body.username, 'this is username')
-	User.where({username: req.body.username}).fetch().then(
+	UserModel.where({username: req.body.username}).fetch().then(
 		function(result) {
 			// res.send('hi')
 			var attempt = comparePasswordHashes(req.body.password_hash, result.attributes.password_hash);
@@ -102,6 +126,7 @@ function attemptToLogin(req, res, next) {
 			console.log(attempt, ' this is attempt')
 			if (attempt === true) {
 			req.session.theResultFromOurModelInsertion = result.attributes.username
+			req.session.user_id = result.attributes.id
 			res.redirect('/profilepage')
 			}
 			else {

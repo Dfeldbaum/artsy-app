@@ -1,14 +1,18 @@
-var db = require('./db');
+var bookshelf = require('./db');
 
-var bookshelf = require('bookshelf')(db);
+require('./photoModel');
 
 
 
 var userModel = bookshelf.Model.extend({
-	tableName: 'users'
-})
+	tableName: 'users',
+	photos: function(){
+		return this.hasMany('photoModel')
+	}
 
-module.exports = userModel;
+});
+
+module.exports = bookshelf.model('userModel', userModel);
 
 
 

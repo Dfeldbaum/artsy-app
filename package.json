@@ -18,6 +18,7 @@
     "gulp": "^3.9.1",
     "gulp-express": "^0.3.5",
     "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.10",
     "handlebars": "^4.0.5",
     "hbs": "^4.0.1",

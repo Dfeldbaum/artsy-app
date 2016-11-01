@@ -1,11 +1,12 @@
-var db = require('./db');
+var bookshelf = require('./db');
 
-var bookshelf = require('bookshelf')(db);
+require('./userModel');
 
+var photoModel = bookshelf.Model.extend({
+	tableName: 'photos',
+	users: function(){
+		return this.belongsTo('userModel')
+	}
+});
 
-
-var userModel = bookshelf.Model.extend({
-	tableName: 'photos'
-})
-
-module.exports = userModel;
+module.exports = bookshelf.model('photoModel', photoModel);
