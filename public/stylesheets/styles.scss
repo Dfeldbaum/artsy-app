@@ -5,6 +5,8 @@ html {
 }	
 
 
+
+
 body {
 	background-image: url('/images/trees.jpg');
 	background-size: cover;
@@ -16,19 +18,34 @@ body {
 	text-align: center;
 }
 
+// ----- index login form ------
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+
 h5 {
-	font-size: 7em;
+	font-size: 6em;
 	color: black;
-	padding-top: 3rem;
+	padding-top: 10rem;
 	padding-bottom: 1rem;
+	font-weight: 200;
 
 }
 
 p {
-	color: white;
+	color: black;
 	font-size: 1rem;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 }
 
+// ----- register form ------
+
+
+
+
+
+// ----- profile page ------
 

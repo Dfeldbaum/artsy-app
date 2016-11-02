@@ -25,15 +25,13 @@ ctrl.get('/profilepage', renderProfilePage)
 
 
 
-
-
 ctrl.post('/register/success', attemptToRegister);
 ctrl.post('/', attemptToLogin);
 // trigger uploadPhoto
 ctrl.post('/upload', uploadPhoto);
 
 
-
+// functions
 function uploadPhoto(req, res, next){
 	console.log(req.session)
 	console.log(req.body, ' this is req.bdoy')
@@ -46,13 +44,13 @@ function uploadPhoto(req, res, next){
 }
 
 
-
 function renderLoginPage(req, res, next) {
 	res.render('index', { title: 'Artsy'});
 };	
 
 
 function renderRegisterPage (req, res, next) {
+	console.log(req.body.session)
 	res.render('register', {})
 };
 
@@ -64,7 +62,7 @@ function renderProfilePage(req, res, next){
  	UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
     function(result) {
 
-    
+
 
 
    	console.log(result.attributes);
@@ -93,7 +91,7 @@ function attemptToRegister(req, res, next) {
 		req.session.theResultFromOurModelInsertion = result.attributes.username
 
 		//res.render
-		// res.json(result); 
+		//res.json(result); 
 		res.redirect('/profilepage')
 	});
 };
@@ -139,10 +137,5 @@ function attemptToLogin(req, res, next) {
 
 
 
-
 module.exports = ctrl;
-
-
-
-
 

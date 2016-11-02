@@ -6,11 +6,12 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	    <script type="text/javascript" src="javascripts/photos.js"> </script>
 	</head>
 
 	<body>
 
-{{!--     	<h5>Welcome, {{username}}!</h5> --}}
+    	<h6>Welcome, {{username}}!</h6>
         <form action="/upload" method="post">
 	        <h6>Upload Image</h6>
 	        <input type="text" name="photo_name" placeholder="Photo Name">
@@ -65,6 +66,43 @@
 		    });
 		</script>
 
+
+		{{!-- begin photos storage --}}
+
+			<div id ="wrap">
+		<header>
+			<h1>Archive - Artsy Photos of the Week</h1>
+		</header>
+		<div id="navigation">
+			
+	        	<button id="archive">Archive</a>
+		</div>
+
+
+
+		<div id ="mainDisplay"> <!--holds the back and forward buttons and the magnified image-->
+	    	<!-- <button id ="back-button">back</button> -->
+	    	<img id = "magnified-image" src="">
+	    	<!-- <button id ="forward-button"	>forward</button> -->
+	    </div>
+
+		<div id="thumbnail-grid"> 
+		
+			<img id = "image-1" src="">
+			<img id = "image-2" src="">
+			<img id = "image-3" src="">
+			<img id = "image-4" src="">
+			<img id = "image-5" src="">
+			<img id = "image-6" src="">	
+		</div>
+
+
+		<footer id="footer">
+			<strong>Artsy 2016</strong>
+		</footer>
+	</div>
+
+		
 
 	</body>
 </html>
