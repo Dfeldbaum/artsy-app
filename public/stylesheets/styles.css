@@ -14,6 +14,9 @@ body {
 ::-webkit-input-placeholder {
   color: black; }
 
+#register-prompt {
+  font-weight: 600; }
+
 h5 {
   font-size: 6em;
   color: black;
@@ -22,7 +25,26 @@ h5 {
   font-weight: 200; }
 
 p {
-  color: black;
+  color: white;
   font-size: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem; }
+
+#register-header {
+  font-size: 7.5rem;
+  color: black;
+  padding-top: 10rem;
+  padding-bottom: 1rem;
+  font-weight: 200; }
+
+.register-form-background {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 90rem;
+  height: 60rem; }
+
+.register-form-container {
+  margin: 0 auto;
+  width: 320px; }
+
+#photo-wrapper {
+  width: 50rem; }

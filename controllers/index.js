@@ -83,6 +83,8 @@ function renderRegisterPage (req, res, next) {
 function renderProfilePage(req, res, next){
 	// res.render('profilepage')
 	
+
+
 	UserModel.where({id: req.session.user_id}).fetch({withRelated: 'photos'})
 		.then(function(photo){
 
@@ -92,9 +94,17 @@ function renderProfilePage(req, res, next){
 			}
 
 			console.log('----------------------------------------------------------------')
-			console.log(viewModel.photoUpload[0].attributes.id)
+			console.log(photo)
+			console.log(viewModel.photoUpload.length)
 			console.log('----------------------------------------------------------------')
-			res.render('profilepage', viewModel)
+
+			if (viewModel.photoUpload.length === 0){
+				res.render('profilepage', {})
+			}
+			else {
+				res.render('profilepage', viewModel)
+			}
+			
 			// res.send('hi')
 		})
 
@@ -144,7 +154,7 @@ function attemptToRegister(req, res, next) {
 		password_hash: hashedPassword
 	}).save().then(function(result) {
 		req.session.theResultFromOurModelInsertion = result.attributes.username
-
+		req.session.user_id = result.attributes.id
 		//res.render
 		//res.json(result); 
 		res.redirect('/profilepage')

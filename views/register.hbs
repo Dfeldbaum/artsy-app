@@ -8,15 +8,20 @@
 		<div class="card valign-wrapper transparent z-depth-0">
 			<div class="card-content valign center-block" >
 	    		<div class="row">
-	        		<div class="s12">	
-						<h5 class="grey-text">Register</h5>
-							<form action="/register/success" method="post" charset="utf-8">
-								<input type="text" name="first_name" placeholder="First Name" required></br></br>
-								<input type="text" name="last_name" placeholder="Last Name" required></br></br>
-								<input type="text" name="username" placeholder="Username" required></br></br>
-								<input type="text" name="password_hash" placeholder="Password" required></br></br>
-								<input type="submit" value="Register Now"></input>
-							</form>
+	        		<div class="s12">
+	        			<div class="register-form-background">
+                        	<div class="register-form-container">
+
+								<h5 id='register-header'>Register</h5>
+									<form action="/register/success" method="post" charset="utf-8">
+										<input type="text" name="first_name" placeholder="First Name" required></br></br>
+										<input type="text" name="last_name" placeholder="Last Name" required></br></br>
+										<input type="text" name="username" placeholder="Username" required></br></br>
+										<input type="text" name="password_hash" placeholder="Password" required></br></br>
+										<input type="submit" value="Register Now"></input>
+									</form>
+							</div>
+						</div>
 					</div>
 				</div>	
 			</div>

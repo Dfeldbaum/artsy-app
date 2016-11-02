@@ -1,0 +1,80 @@
+#wrap{
+	margin:0 auto;
+	width: 960px;
+}
+
+
+
+/*a {
+	background-color: rgba(158,158,158,1.00);
+	color: rgba(240,239,239,1.00);
+	text-decoration: none;
+	font-size: medium;
+	font-weight: bold;
+	font-variant: normal;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	border-right: thin solid rgba(244,244,244,1.00);
+	margin-left: 10px;
+	text-align: center;
+	width: 50%;
+	height: 100%;
+}*/
+
+img {
+	height: 500px;
+	width: 500px;
+	object-fit: cover;
+
+}
+
+#photo-navigation {
+	text-align: center;
+}
+
+/*#back-button {
+	margin: 0 auto;
+	display: inline-block;
+}*/
+
+/*body {*/
+	/*background-color: rgba(215,207,207,1.00);*/
+	/*background-image: url("images/kindajean.png");*/
+/*	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+
+}*/
+/*#forward-button {
+	display: inline-block;
+}*/
+
+
+#thumbnail-grid {
+	text-align: center;
+	width: 960px;
+	margin: 0 auto;
+	display: inline-block;
+	margin: 5px;
+	padding: 0;
+
+}
+#thumbnail-grid > img {
+	width: 75px;
+	height: 75px;
+	display: inline-block;
+}
+#mainDisplay {
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 30px;
+	display: inline-block;
+	text-align: center;
+}
+
+#magnified-image {
+	width: 650px;
+	height: 450px;
+	/*width: 800px;
+	height: 650px;*/
+	display: inline-block;
+}
