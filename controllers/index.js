@@ -21,7 +21,7 @@ ctrl.get('/', renderLoginPage)
 // register page
 ctrl.get('/register', renderRegisterPage)
 // profile page
-ctrl.get('/profilepage', renderProfilePage)
+ctrl.get('/profilepage', renderProfilePage) // add renderUserImages callback
 
 
 
@@ -29,6 +29,13 @@ ctrl.post('/register/success', attemptToRegister);
 ctrl.post('/', attemptToLogin);
 // trigger uploadPhoto
 ctrl.post('/upload', uploadPhoto);
+
+
+
+
+
+
+
 
 
 // functions
@@ -42,6 +49,23 @@ function uploadPhoto(req, res, next){
     }).save();
     res.redirect('/profilepage')
 }
+
+
+
+
+// function renderUserImages(req, res, next) {
+// 	// call collection of rows (table)
+// 	photoModel.collection().fetch().then(function(result) {
+// 		// res.render('all', models);
+// 		res.json(result);
+// 	});
+// };
+
+	// photoModel.where({id: 8}).fetch({withRelated: ['photos']})
+	// .then(function(user){
+	// 	res.json(user.related('photos'))
+	// })
+
 
 
 function renderLoginPage(req, res, next) {
@@ -58,19 +82,50 @@ function renderRegisterPage (req, res, next) {
 
 function renderProfilePage(req, res, next){
 	// res.render('profilepage')
-	console.log(req.body)
- 	UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
-    function(result) {
+	
+	UserModel.where({id: req.session.user_id}).fetch({withRelated: 'photos'})
+		.then(function(photo){
+
+		
+			var viewModel = {
+				photoUpload: photo.related('photos').models
+			}
+
+			console.log('----------------------------------------------------------------')
+			console.log(viewModel.photoUpload[0].attributes.id)
+			console.log('----------------------------------------------------------------')
+			res.render('profilepage', viewModel)
+			// res.send('hi')
+		})
+
+
+ 	// UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
+  //   function(result) {
+    	
+  //   	photoModel.where({user_id: 8}).fetch().then(
+  //   		function(results) {
+  //   			// view model
+
+  //   			var viewModel = {}
+
+  //   			// loop through viewModel
+  //   			console.log('----------------------------------------------------------------')
+
+
+  //   			console.log(results)
+
+  //   			console.log('----------------------------------------------------------------')
+  //   			res.render('profilepage' , viewModel); // results.attributes
+  //   		})
 
 
 
+  //  		console.log(result.attributes);
 
-   	console.log(result.attributes);
-		res.render('profilepage' , result.attributes);
-     })
-     .catch(function(error) {
-       	console.log(error)
-     });
+  //    })
+  //    .catch(function(error) {
+  //      	console.log(error)
+  //    });
  
 }
 
