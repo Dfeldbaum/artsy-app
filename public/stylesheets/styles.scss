@@ -22,6 +22,8 @@ body {
 
 ::-webkit-input-placeholder {
    color: black;
+   text-align: center;
+   font-size: 1.3rem;
 }
 
 
@@ -71,6 +73,15 @@ p {
 
 // ----- profile page ------
 
+
+ul {
+	text-align: center;
+}
+
+
+#welcome-text {
+	font-size: 3rem;
+}
 
 #photo-wrapper {
 	width: 50rem;

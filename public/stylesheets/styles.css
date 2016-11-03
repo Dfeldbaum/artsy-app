@@ -12,7 +12,9 @@ body {
   text-align: center; }
 
 ::-webkit-input-placeholder {
-  color: black; }
+  color: black;
+  text-align: center;
+  font-size: 1.3rem; }
 
 #register-prompt {
   font-weight: 600; }
@@ -45,6 +47,12 @@ p {
 .register-form-container {
   margin: 0 auto;
   width: 320px; }
+
+ul {
+  text-align: center; }
+
+#welcome-text {
+  font-size: 3rem; }
 
 #photo-wrapper {
   width: 50rem; }
