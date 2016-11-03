@@ -50,7 +50,8 @@ function uploadPhoto(req, res, next){
     var photo = new photoModel({
     	user_id: req.session.user_id,
     	image_as_base64: req.body.image_as_base64,
-        photo_name: req.body.photo_name
+        photo_name: req.body.photo_name,
+        photo_price: req.body.photo_price
     }).save();
     res.redirect('/profilepage')
 }

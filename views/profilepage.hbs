@@ -47,14 +47,16 @@
 	            	<div class="col s12">
 	       {{!--      		<div class="container" id="new-register-container">	 --}}
 
-							    	{{!-- <h6>Welcome, {{user_id}}!</h6> --}}
-							        <form action="/upload" method="post" id="profile-page-form">
-								        {{!-- <h6>Upload Image</h6> --}}
-								        <input type="text" name="photo_name" placeholder="Upload Name">
-								        <input type="file" name="photo" placeholder="photo" class="waves-effect waves-light btn"></br>
-								        <input type="hidden" name="image_as_base64"></br>
-								        <input type="submit" value="Upload Your Image" class="waves-effect waves-light btn">
-							        </form>
+							    	<h6 id="profile-welcome-text">Welcome to your ARTSY Gallery, {{username}}!</h6>
+							    	<h7 id="welcome-message">Upload your beautiful artwork, photos and more by clicking "Choose file" and "Upload Your Image" below. </h7>
+				        <form action="/upload" method="post" id="profile-page-form">
+					        {{!-- <h6>Upload Image</h6> --}}
+					        <input type="text" name="photo_name" placeholder="Art Name">
+					        <input type="text" name="photo_price" placeholder="Art Price (USD)">
+					        <input type="file" name="photo" placeholder="photo" class="waves-effect waves-light btn"></br>
+					        <input type="hidden" name="image_as_base64"></br>
+					        <input type="submit" value="Upload Your Image" class="waves-effect waves-light btn">
+				        </form>
 
         {{!-- start base 64 converter  --}}
 

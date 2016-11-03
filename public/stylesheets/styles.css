@@ -70,7 +70,7 @@ p {
 ul {
   text-align: center; }
 
-#welcome-text {
+#profile-welcome-text {
   font-size: 3rem; }
 
 #new-profile-page-container {
@@ -81,4 +81,5 @@ ul {
 #profile-page-form {
   text-align: center;
   width: 15rem;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-top: 2rem; }

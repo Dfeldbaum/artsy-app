@@ -41,7 +41,7 @@ ALTER TABLE users
     AFTER id;
 
 
-ALTER TABLE photos
+ALTER TABLE photosdr
    	CHANGE photo_title photo_name varchar(255) not null;
 
 
