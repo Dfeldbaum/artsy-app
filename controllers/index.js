@@ -22,6 +22,11 @@ ctrl.get('/', renderLoginPage)
 ctrl.get('/register', renderRegisterPage)
 // profile page
 ctrl.get('/profilepage', renderProfilePage) // add renderUserImages callback
+// logout page
+ctrl.get('/logout', function(req, res, next){
+    req.session=null;
+    res.redirect('/');
+});
 
 
 
@@ -203,4 +208,3 @@ function attemptToLogin(req, res, next) {
 
 
 module.exports = ctrl;
-
