@@ -9,9 +9,7 @@ create table users (
 	primary key(id)
 );	
 
-ALTER TABLE photos
-   	ADD COLUMN image_as_base64 text not null
-    AFTER vote_count;
+
 
 
 create table photos (
@@ -25,6 +23,11 @@ create table photos (
 );
 
 
+ALTER TABLE photos
+   	ADD COLUMN image_as_base64 text
+    AFTER photo_date;
+
+
 ALTER TABLE photos DROP COLUMN vote_count;
 
 ALTER TABLE photos
@@ -32,6 +35,32 @@ ALTER TABLE photos
 
 ALTER TABLE photos
    	CHANGE vote_count image_as_base64 text not null;
+
+ALTER TABLE users
+   	ADD COLUMN first_name varchar(255) not null
+    AFTER id;
+
+
+ALTER TABLE photos
+   	CHANGE photo_title photo_name varchar(255) not null;
+
+
+ALTER TABLE photos
+   	ADD COLUMN image_as_base64 text 
+   	AFTER photo_date;
+
+
+
+ALTER TABLE photos
+   	CHANGE image_as_base64 image_as_base64 longtext;
+
+
+ALTER TABLE photos
+   	ADD COLUMN photo_price varchar(255) not null
+   	AFTER photo_name;
+
+ALTER TABLE photos
+   	CHANGE photo_price photo_price varchar(255) not null;
 
 
 

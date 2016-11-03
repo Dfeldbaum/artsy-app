@@ -7,7 +7,7 @@
 	</head>
 
 	<body>
-	<nav class="black" role="navigation">
+{{!-- 	<nav class="black" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">ARTSY</a>
       <ul class="right hide-on-med-and-down">
@@ -19,16 +19,36 @@
       </ul>
       <a href="/" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-  </nav>
-		<div class="card valign-wrapper transparent z-depth-0">
-      		<div class="card-content valign center-block" >
-	        	<div class="row">
-	            	<div class="col s12">	
-	            		<div class="register-form-background">
-                        	<div class="register-form-container">
+  </nav> --}}
 
-							{{!--     	<h6>Welcome, {{username}}!</h6> --}}
-							        <form action="/upload" method="post">
+
+		<nav class="black" role="navigation">
+
+		  	<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">ARTSY</a>
+		    	<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+		      	<ul class="right hide-on-med-and-down">
+		        	<li><a href="/register"><i class="material-icons left">add_circle_outline</i>Sign Up</a></li>
+		        	<li><a href="/"><i class="material-icons left">account_circle</i>Login</a></li> 
+		        	<li><a href="/logout"><i class="material-icons left">power_settings_new</i>Logout</a></li>
+		      	</ul> 
+		      	<ul id="nav-mobile" class="side-nav">
+
+		        	<li><a href="/register"><i class="material-icons right">add_circle_outline</i>Sign Up</a></li>
+		        	<li><a href="/"><i class="material-icons right">account_circle</i>Login</a></li>  
+		        	<li><a href="/logout"><i class="material-icons right">account_circle</i>Logout</a></li>  
+		      	</ul>
+		      
+		  	</div>
+		</nav>
+
+		<div class="card valign-wrapper transparent z-depth-0">
+      		<div class="card-content valign center-block" id="new-profile-page-container">
+	        	<div class="row">
+	            	<div class="col s12">
+	       {{!--      		<div class="container" id="new-register-container">	 --}}
+
+							    	{{!-- <h6>Welcome, {{user_id}}!</h6> --}}
+							        <form action="/upload" method="post" id="profile-page-form">
 								        {{!-- <h6>Upload Image</h6> --}}
 								        <input type="text" name="photo_name" placeholder="Upload Name">
 								        <input type="file" name="photo" placeholder="photo" class="waves-effect waves-light btn"></br>
@@ -79,15 +99,12 @@
 		            // read the file argument
 		            reader.readAsDataURL(binaryData);
 		        };
-
-
 		    });
 		</script>
 
 		{{!-- end base 64 converter  --}}
 
 		{{!-- start photos storage --}}
-
 
 			<div id="photo-wrapper">	
 			  	<ul>
@@ -102,10 +119,9 @@
 					
 			  </ul>	
 
-			</div>
 
-										        </div>
-							        </div>
+							       
+							      {{!--   </div> --}}
 </div>
 				</div>	
 			</div>
