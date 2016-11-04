@@ -7,37 +7,20 @@
 	</head>
 
 	<body>
-{{!-- 	<nav class="black" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">ARTSY</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-      <a href="/" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav> --}}
-
 
 		<nav class="black" role="navigation">
-
 		  	<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">ARTSY</a>
 		    	<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 		      	<ul class="right hide-on-med-and-down">
-		        	<li><a href="/register"><i class="material-icons left">add_circle_outline</i>Sign Up</a></li>
+		        	<li><a href="/register"><i class="material-icons left">add_circle_outline</i>Register</a></li>
 		        	<li><a href="/"><i class="material-icons left">account_circle</i>Login</a></li> 
 		        	<li><a href="/logout"><i class="material-icons left">power_settings_new</i>Logout</a></li>
 		      	</ul> 
-		      	<ul id="nav-mobile" class="side-nav">
-
+		      	 <ul class="side-nav" id="mobile-demo">
 		        	<li><a href="/register"><i class="material-icons right">add_circle_outline</i>Sign Up</a></li>
 		        	<li><a href="/"><i class="material-icons right">account_circle</i>Login</a></li>  
 		        	<li><a href="/logout"><i class="material-icons right">account_circle</i>Logout</a></li>  
 		      	</ul>
-		      
 		  	</div>
 		</nav>
 
@@ -45,131 +28,96 @@
       		<div class="card-content valign center-block" id="new-profile-page-container">
 	        	<div class="row">
 	            	<div class="col s12">
-	       {{!--      		<div class="container" id="new-register-container">	 --}}
-
-							    	<h6 id="profile-welcome-text">Welcome to your ARTSY Gallery, {{username}}!</h6>
-							    	<h7 id="welcome-message">Upload your beautiful artwork, photos and more by clicking "Choose file" and "Upload Your Image" below. </h7>
+				    	<h6 id="profile-welcome-text">{{username}}'s Gallery</h6> 
 				        <form action="/upload" method="post" id="profile-page-form">
-					        {{!-- <h6>Upload Image</h6> --}}
 					        <input type="text" name="photo_name" placeholder="Art Name">
-					        <input type="text" name="photo_price" placeholder="Art Price (USD)">
-					        <input type="file" name="photo" placeholder="photo" class="waves-effect waves-light btn"></br>
+					        <input type="text" name="photo_price" placeholder="Price (USD)">
+					        {{!--  <input type="text" name="photo_size" placeholder="Size">
+					          <input type="text" name="photo_medium" placeholder="Medium"> --}}
+					        <input type="file" name="photo" placeholder="photo" class="waves-effect waves-light btn" id="file-input"></br>
 					        <input type="hidden" name="image_as_base64"></br>
-					        <input type="submit" value="Upload Your Image" class="waves-effect waves-light btn">
+					        <input type="submit" value="Upload Your Art" class="waves-effect waves-light btn">
 				        </form>
 
-        {{!-- start base 64 converter  --}}
+				        {{!-- start base 64 converter  --}}
 
-		<script type="text/javascript">
-		    $(document).ready(function(event) {
-		        // select our input DOM element with a type of file
-		        var fileInput = document.querySelector('input[type="file"]');
-		        var hiddenFileForParams = document.querySelector('input[type="hidden"]');
+						<script type="text/javascript">
+						    $(document).ready(function(event) {
+						        // select our input DOM element with a type of file
+						        var fileInput = document.querySelector('input[type="file"]');
+						        var hiddenFileForParams = document.querySelector('input[type="hidden"]');
 
-		        fileInput.addEventListener('change', function() {
-		            var fileAsBase64 = convertToBase64(fileInput.files[0], hiddenFileForParams);
-		            // now, you can sent your file over via an $ajax call in that callback
-		        });
+						        fileInput.addEventListener('change', function() {
+						            var fileAsBase64 = convertToBase64(fileInput.files[0], hiddenFileForParams);
+						            // now, you can sent your file over via an $ajax call in that callback
+						        });
 
-		        /**
-		         * convertToBase64
-		         * @param binaryData: Input data from an <input type="file">
-		         * @param hiddenInput: input type='hidden' to contain base64
-		         * @param callback: js method to call when completed
-		         */
-		        function convertToBase64(binaryData, hiddenInput, callback) {
-		            // use a FileReader
-		            // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
-		            var reader = new FileReader();
-		            reader.onload = function (event) {
-		                // try to read whatever file has been 'readAsDataURL'
-		                try {
-		                    // event target result is our base64 encoded type
-		                    // this is whatever file has been reader during 'readAsDataURL'
-		                    console.log("File as base 64:");
-		                   
-		                    // pass our base64 object on to our callback
-		                    hiddenInput.value = event.target.result;
-		                   	
-		                    return(event.target.result);
-		                    // catch an error if one occurs...
-		                } catch (ex) {
-		                    // output a warning in the DevTools console
-		                    throw new Error("Couldn't convert file: " + ex);
-		                }
-		            }
-		            // read the file argument
-		            reader.readAsDataURL(binaryData);
-		        };
-		    });
-		</script>
+						        /**
+						         * convertToBase64
+						         * @param binaryData: Input data from an <input type="file">
+						         * @param hiddenInput: input type='hidden' to contain base64
+						         * @param callback: js method to call when completed
+						         */
+						        function convertToBase64(binaryData, hiddenInput, callback) {
+						            // use a FileReader
+						            // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+						            var reader = new FileReader();
+						            reader.onload = function (event) {
+						                // try to read whatever file has been 'readAsDataURL'
+						                try {
+						                    // event target result is our base64 encoded type
+						                    // this is whatever file has been reader during 'readAsDataURL'
+						                    console.log("File as base 64:");
+						                   
+						                    // pass our base64 object on to our callback
+						                    hiddenInput.value = event.target.result;
+						                   	
+						                    return(event.target.result);
+						                    // catch an error if one occurs...
+						                } catch (ex) {
+						                    // output a warning in the DevTools console
+						                    throw new Error("Couldn't convert file: " + ex);
+						                }
+						            }
+						            // read the file argument
+						            reader.readAsDataURL(binaryData);
+						        };
+						    });
+						</script>
 
-		{{!-- end base 64 converter  --}}
+						{{!-- end base 64 converter  --}}
 
-		{{!-- start photos storage --}}
+						{{!-- start photos storage --}}
 
-			<div id="photo-wrapper">	
-			  	<ul>
-				
-					{{#each photoUpload}}
-			
-			  		<li><img id = "image" src="{{this.attributes.image_as_base64}}"></li>
+						<div id="photo-wrapper">	
+						  	<ul>
+							
+								{{#each photoUpload}}
+						
+								<div>{{this.attributes.photo_name}}</div>
+						  		<div>{{this.attributes.photo_price}}</div>
+						  		<li><img id = "image" src="{{this.attributes.image_as_base64}}"></li>
 
-					{{else}}
-					<p class='empty'>No Content</p>  	
-					{{/each}}
-					
-			  </ul>	
-
-
-							       
-							      {{!--   </div> --}}
-</div>
+					{{!-- 	  		
+						  		{{this.attributes.photo_price}}
+						  		{{this.attributes.photo_date}} --}}
+								{{else}}
+								<p class='empty'>No Content</p>  	
+								{{/each}}
+								
+						  </ul>					       
+						</div>
+					</div>
 				</div>	
 			</div>
 		</div>
-
-
-
-
-		{{!-- start original photos storage template  --}}
-
-			{{!-- <div id ="photo-wrapper">
-
-					<div id="photo-navigation">
-						
-				        	<button id="archive">Archive</a>
-					</div>
-
-
-
-					<div id ="mainDisplay"> <!--holds the back and forward buttons and the magnified image-->
-				    	<!-- <button id ="back-button">back</button> -->
-				    	<img id = "magnified-image" src="">
-				    	<!-- <button id ="forward-button"	>forward</button> -->
-				    </div>
-
-					<div id="thumbnail-grid"> 
-					
-						<img id = "image-1" src="">
-						<img id = "image-2" src="">
-						<img id = "image-3" src="">
-						<img id = "image-4" src="">
-						<img id = "image-5" src="">
-						<img id = "image-6" src="">	
-					</div>
-
-
-				</div> --}}
-
-		
-
-
-
-		
+		<script>
+ 			$( document ).ready(function(){
+  			$(".button-collapse").sideNav();
+ 			});
+		</script>
 
 	</body>
 </html>
-
 
 

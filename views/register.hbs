@@ -10,32 +10,35 @@
 		  	<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">ARTSY</a>
 		    	<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 		      	<ul class="right hide-on-med-and-down">
-		        	<li><a href="/register"><i class="material-icons left">add_circle_outline</i>Sign Up</a></li>
+		        	<li><a href="/register"><i class="material-icons left">add_circle_outline</i>Register</a></li>
 		        	<li><a href="/"><i class="material-icons left">account_circle</i>Login</a></li> 
 		        	<li><a href="/logout"><i class="material-icons left">power_settings_new</i>Logout</a></li>
 		      	</ul> 
 		      	<ul id="nav-mobile" class="side-nav">
-
 		        	<li><a href="/register"><i class="material-icons right">add_circle_outline</i>Sign Up</a></li>
 		        	<li><a href="/"><i class="material-icons right">account_circle</i>Login</a></li>  
 		        	<li><a href="/logout"><i class="material-icons right">account_circle</i>Logout</a></li>  
 		      	</ul>
-		      
 		  	</div>
 		</nav>	
 		<div class="card valign-wrapper transparent z-depth-0">
 			<div class="card-content valign center-block" id="new-register-page-container">
 	    		<div class="row">
-	        		<div class="s12">
-								<h5 id='register-header'>Register</h5>
-									<form action="/register/success" method="post" charset="utf-8" id="register-page-form">
-										<input type="text" name="first_name" placeholder="First Name" required></br></br>
-										<input type="text" name="last_name" placeholder="Last Name" required></br></br>
-										<input type="text" name="username" placeholder="Username" required></br></br>
-										<input type="text" name="password_hash" placeholder="Password" required></br></br>
-										<input type="submit" value="Register Now"></input>
-									</form>
+	        		<div class="col s5">
+				    	<h6 id="register-welcome-text">Register Today</h6>
+				    	<h7 id="register-message">Upload simply, beautiful art.</h7>	        
+							<form action="/register/success" method="post" charset="utf-8" id="register-page-form">
+								<input type="text" name="first_name" placeholder="First Name" required></br></br>
+								<input type="text" name="last_name" placeholder="Last Name" required></br></br>
+								<input type="text" name="username" placeholder="Username" required></br></br>
+								<input type="text" name="password_hash" placeholder="Password" required></br></br>
+								<input type="submit" value="Register" class="waves-effect waves-light btn"></input>
+							</form>
 					</div>
+					<div class="col s7">
+					<img src="http://i.imgur.com/UmjY6v0.png" id="picasso">
+					</div
+
 				</div>	
 			</div>
 		</div>

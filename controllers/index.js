@@ -38,11 +38,6 @@ ctrl.post('/upload', uploadPhoto);
 
 
 
-
-
-
-
-
 // functions
 function uploadPhoto(req, res, next){
 	console.log(req.session)
@@ -88,15 +83,19 @@ function renderRegisterPage (req, res, next) {
 
 function renderProfilePage(req, res, next){
 	// res.render('profilepage')
-	
 
+	console.log(req.session)
+	
+// UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
+//     function(result) {
 
 	UserModel.where({id: req.session.user_id}).fetch({withRelated: 'photos'})
 		.then(function(photo){
 
 		
 			var viewModel = {
-				photoUpload: photo.related('photos').models
+				photoUpload: photo.related('photos').models,
+				username: req.session.theResultFromOurModelInsertion
 			}
 
 			console.log('----------------------------------------------------------------')
@@ -105,14 +104,16 @@ function renderProfilePage(req, res, next){
 			console.log('----------------------------------------------------------------')
 
 			if (viewModel.photoUpload.length === 0){
-				res.render('profilepage', {})
+				console.log()
+				res.render('profilepage', {username: req.session.theResultFromOurModelInsertion})
 			}
 			else {
 				res.render('profilepage', viewModel)
 			}
 			
 			// res.send('hi')
-		})
+
+	})
 
 
  	// UserModel.where({username: req.session.theResultFromOurModelInsertion}).fetch().then(
@@ -141,9 +142,9 @@ function renderProfilePage(req, res, next){
   //    })
   //    .catch(function(error) {
   //      	console.log(error)
-  //    });
+     // };
  
-}
+};
 
 
 function attemptToRegister(req, res, next) {

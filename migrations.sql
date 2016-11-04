@@ -64,3 +64,15 @@ ALTER TABLE photos
 
 
 
+
+ALTER TABLE photos
+   	ADD COLUMN photo_medium varchar(255) not null
+   	AFTER photo_size;
+ 
+
+   	photo_size
+
+   	photo_medium
+
+
+

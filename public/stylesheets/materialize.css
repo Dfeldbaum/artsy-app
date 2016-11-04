@@ -3446,6 +3446,7 @@ input[type=range] + .thumb {
   margin-left: auto;
   left: auto;
   right: auto;
+  padding-left: 7rem;
 }
 
 .row .col.s6 {
@@ -5711,7 +5712,7 @@ input[type=number],
 input[type=search],
 textarea.materialize-textarea {
   background-color: transparent;
-  border: .2rem solid #000000;
+  border: .275rem solid #000000;
   // border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;

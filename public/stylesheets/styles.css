@@ -23,7 +23,11 @@ body {
 
 input:-webkit-autofill {
   -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both; }
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-text-align: center; }
+
+input {
+  text-align: center; }
 
 #register-prompt {
   font-weight: 600; }
@@ -31,8 +35,8 @@ input:-webkit-autofill {
 h5 {
   font-size: 6em;
   color: black;
-  padding-top: 10rem;
-  padding-bottom: 1rem;
+  padding-top: 11rem;
+  padding-bottom: 0.3rem;
   font-weight: 200; }
 
 p {
@@ -41,21 +45,21 @@ p {
   padding-top: 2rem;
   padding-bottom: 2rem; }
 
+img {
+  max-width: 100%;
+  height: auto; }
+
+#quote {
+  padding-top: 9.5rem;
+  color: white;
+  font-style: italic; }
+
 #register-header {
   font-size: 7.5rem;
   color: black;
   padding-top: 10rem;
   padding-bottom: 1rem;
   font-weight: 200; }
-
-.register-form-background {
-  background-color: rgba(255, 255, 255, 0.85);
-  width: 90rem;
-  height: 60rem; }
-
-.register-form-container {
-  margin: 0 auto;
-  width: 320px; }
 
 #new-register-page-container {
   background-color: rgba(255, 255, 255, 0.85);
@@ -65,7 +69,17 @@ p {
 #register-page-form {
   text-align: center;
   width: 15rem;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 12rem; }
+
+#register-welcome-text {
+  padding-top: 5rem;
+  font-size: 3rem; }
+
+#register-message {
+  padding-top: 3rem;
+  font-size: 2rem; }
 
 ul {
   text-align: center; }
@@ -80,6 +94,10 @@ ul {
 
 #profile-page-form {
   text-align: center;
-  width: 15rem;
+  width: 20rem;
   margin: 0 auto;
-  padding-top: 2rem; }
+  padding-top: 2rem;
+  padding-bottom: 1rem; }
+
+#file-input {
+  width: 90%; }
