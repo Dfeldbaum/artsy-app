@@ -35,10 +35,8 @@
 
 * Fix register session bugs, which prevent refreshing window
 * Enhance gallery template that receives encoded images upon each upload and then query
-* Add logout view and messaging, 
-* Sounds for collecting Milk
-* Feature that allows player to disable sound
-* Quit and restart features built into a game menu or loseGame function
+* Add logout view and messaging
+* Add Facebook sharing capabilities
 
 --- 
 
