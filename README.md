@@ -13,15 +13,15 @@
 
 ### Technical Requirements
 
-* App created within Node.js/Express server, which contains login, register, and profile page views 
+* App created within Node.js/Express server, which contains login, register, and profile page views and paths controlled by controllers
 * Maintained a KISS and DRY approach to code as much as possible (some refactoring still required)
 
 --- 
 
 ### App Summary & User Stories 
 
-* ARTSY is a full stack app built with Node.js, Express, MySQL, Handlebars, and Javascript
-* Styling is comprised of custom CSS/SASS and element the Materialize.CSS framework
+* ARTSY is a full stack app built with Node.js, Express, MySQL, Javascript, Handlebars, CSS and Materialize.CSS
+* Styling is comprised of custom CSS/SASS and element styling using the Materialize.CSS framework
 * MySQL database contains a users table and a photos table  
 * Handlebar routes/views include a login page, where new users can register and returning users can login
 * Upon landing on register page, users can sign up with unique first_name, last_name, username and password which feeds into photo table

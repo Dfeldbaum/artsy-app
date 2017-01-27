@@ -27,7 +27,8 @@ input:-webkit-autofill {
   -webkit-animation-text-align: center; }
 
 input {
-  text-align: center; }
+  text-align: center;
+  font-weight: 900; }
 
 #register-prompt {
   font-weight: 600; }

@@ -4,20 +4,20 @@ use artsy;
 
 create table users (
 	id int not null auto_increment,
+  first_name varchar(255) not null,
+  last_name varchar(255) not null,
 	username varchar (255) not null,
 	password_hash varchar(75) not null,
 	primary key(id)
 );	
 
 
-
-
 create table photos (
 	id int not null auto_increment,
 	photo_name varchar(255) not null,
+  photo_price varchar(255) not null,
 	photo_date DATETIME,
-	-- vote_count int,
-	image_as_base64 text not null,
+	image_as_base64 longtext not null,
 	user_id int not null references users(id), 
 	primary key(id)
 );
